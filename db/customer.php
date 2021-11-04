@@ -38,45 +38,41 @@ if($_POST['key'] == 'addcustomer'){
 	}
 	
 }
-//show student
-if($_POST['key'] == 'show_student'){
-	$tbl_data='  <table class="table table-sm table-bordered table-striped" id="student_tbl">
+//show Customer
+if($_POST['key'] == 'show_customer'){
+	$tbl_data='  <table class="table table-sm table-bordered table-striped" id="customer_tbl">
                 <thead class="bg-1">
                   <tr>
-                    <th scope="col">SL</th>
-                    <th scope="col">Roll</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Mobile</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Semester</th>
-                    <th scope="col">Shift</th>
-                    <th scope="col">Session</th>
-                    <th scope="col">Technology</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Address</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>';
-                $sql="SELECT * FROM tbl_student";
-                if($stdata=$db->select($sql)){
-                $sl=1;
-                while ($data=$stdata->fetch_assoc()) {
+                $sql="SELECT * FROM customer";
+                if($ctdata=$db->select($sql)){
+                while ($data=$ctdata->fetch_assoc()) {
                 	$tbl_data.=' <tr> 
-                    <td>'.$sl.'</td>
-                    <td>'.$data['st_roll'].'</td>
-                    <td>'.$data['st_name'].'</td>
-                    <td>'.$data['st_semester'].'</td>
-                    <td>'.$data['st_shift'].'</td>
-                    <td>'.$data['st_session'].'</td>
-                    <td>'.$data['st_technology'].'</td>
+                    <td>'.$data['id'].'</td>
+                    <td>'.$data['mobile'].'</td>
+                    <td>'.$data['name'].'</td>
+                    <td>'.$data['email'].'</td>
+                    <td>'.$data['ctype'].'</td>
+                    <td>'.$data['address'].'</td>
                     <td>
-              <button class="icnbtn"  onclick="view_std('.$data['st_id'].')"><i class="fas fa-eye"></i></button>
+              <button class="icnbtn"  onclick="view_std('.$data['id'].')"><i class="fas fa-eye"></i></button>
                 ||
 
-                <button class="icnbtn" data-toggle="modal" data-target="#update_std" onclick="std_data_f_update('.$data['st_id'].')"><i class="fas fa-user-edit"></i></button>
+                <button class="icnbtn" data-toggle="modal" data-target="#update_std" onclick="std_data_f_update('.$data['id'].')"><i class="fas fa-user-edit"></i></button>
                 ||
                
-                <button onclick="del_std('.$data['st_id'].')" class="icnbtn" ><i class="fas fa-user-times"></i></button>
+                <button onclick="del_std('.$data['id'].')" class="icnbtn" ><i class="fas fa-user-times"></i></button>
             </td>
                   </tr>';
-                  $sl++;
                 }
                 }  
                    

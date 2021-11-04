@@ -39,7 +39,7 @@ if($_POST['key'] == 'addproduct'){
 	}
 	
 }
-//show student
+//show Product
 if($_POST['key'] == 'show_product'){
 	$tbl_data='  <table class="table table-sm table-bordered table-striped" id="product_tbl">
                 <thead class="bg-1">

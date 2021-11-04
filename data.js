@@ -1,5 +1,6 @@
 $(document).ready(function() {
   show_product();
+  show_customer();
   $("#signform").on('submit', function (e) {
     e.preventDefault();
         var email = $("#email");
@@ -54,7 +55,7 @@ $(document).ready(function() {
             alert(data["msg"]);
             if (data["key"] == 1) {
               document.location = "customer.php";
-              show_product();
+              show_customer()();
              }
           }
         });
@@ -153,6 +154,7 @@ function show_product() {
     },
     success: function(data) {
       $("#show_product").html(data);
+      
       $("#product_tbl").DataTable({
         responsive: true,
 
@@ -167,3 +169,28 @@ function show_product() {
     }
   });
 }
+  //show Customer data
+  function show_customer() {
+    $.ajax({
+      url: "db/customer.php",
+      method: "post",
+      dataType: "text",
+      data: {
+        key: "show_customer"
+      },
+      success: function(data) {
+        $("#show_customer").html(data);
+        $("#customer_tbl").DataTable({
+          responsive: true,
+  
+          lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+          ], // page length options
+  
+          dom: "lBfrtip",
+          buttons: ["copy", "csv", "excel", "pdf", "print"]
+        });
+      }
+    });
+  }

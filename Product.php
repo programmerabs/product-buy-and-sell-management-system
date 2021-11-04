@@ -16,7 +16,7 @@
                 <div class="block">
                     <div class="header d-flex justify-content-between">
                         <h2>Product List</h2>
-                        <a href="/Product.php" class="btn" > + Add Product</a>                                     
+                        <a href="/addproduct.php" class="btn" > + Add Product</a>                                     
                     </div>
                     <div class="content">
                     <div id="show_product"> 
